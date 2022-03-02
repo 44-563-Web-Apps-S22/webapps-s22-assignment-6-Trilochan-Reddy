@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <h1>Sravani Jakkula computes tips</h1>
+    <title>page to get values</title>
+</head>
+<body>
+
+<h2>Getting input</h2>
+<form>
+    <label for="amount">Enter a check amount</label>
+    <input type="number" id="amount" value="20">
+    <label for=""tip_increase>Enter tip increase</label>
+    <input type="number" id="tip_increase" value="0.05">
+    <input type="button" onclick="tips()" value="Find tips">
+</form>
+<p id="result">Results are displayed above</p>
+<script>
+    function tips(){
+        console.log("Getting form values")
+        let a=document.getElementById("amount").value
+        a=parseInt(a);
+        //console.log(Number(a));
+        console.log(typeof a);
+        let b=document.getElementById("tip_increase").value
+        console.log(b);
+        let result="";
+        for(let i=0;i<10;i++){
+            let s=Math.round(a*(10/100));
+            a=a+s;
+            console.log( s);
+            //result=a*(0.01)
+            
+            //result=s+(a/10)+b;
+        } 
+        out.innerHTML="Tip amounts by increase of "+s+"are"+result;
+    }
+</script>
+<form>
+    <label for="form1_age">What is your age </label>
+    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+
+    <label for="form1_nick">What is your nickname </label>
+    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+
+    <input type="button" onclick="resolveForm()" value="Get values from form">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+
+function resolveForm (){
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+</script>
+<form>
+    <input type="radio" id="m" name="calculations" value="times"   
+      checked onclick="chooseOp()" >
+    <label for="m">*</label></br>
+  
+    <input type="radio" id="d" name="calculations" 
+       value="divide" onclick="chooseOp()">
+    <label for="d">/</label></br>
+  
+    <input type="radio" id="e" name="calculations"   
+       value="exponent" onclick="chooseOp()">
+    <label for="e">**</label></br>
+
+    <input type="button" onclick="chooseOp()" value="Get values from radio group">
+  </form>
+<p id="result">generate result</p>
+<script>
+    function chooseOp(){
+       let a=document.getElementById("amount").value
+       let b=document.getElementById("tip_increase").value
+       
+    }
+
+</script>
+</body>
+</html>
