@@ -1,58 +1,107 @@
 <!DOCTYPE html>
 <html>
  <head>
-     <title>
-         page for president file
-     </title>
-     <h1>
-        President guess by Trrilochan Reddy Sama
-     </h1>
+     <title>President.html</title>
  </head>
-<body>
-
-<h2>Getting input</h2>
-<form>
-    <label for="George Washington">Enter the secret president name </label>
-    <input type ="password" id="George Washington" value="George Washington" min=10 max=50 step=2 > <br>
-    <br>
-    <label for="form1_nick">Guess the president</label>
-    <input type ="text" id="form1_nick" autofocus> <br>
-    <br>
-    <input type="button" onclick="checkGuess()" value="Check the guess">
-</form>
-<p id="result">This text will be replaced </p>
-<script> 
-let correct=0;
-let wrong=0;
-function checkGuess(){
-    let secretPresidentName = document.getElementById("George Washington").value
-    let GuessThePresidentName = document.getElementById("form1_nick").value 
-    let outputElement = document.getElementById("result");
-    if(secretPresidentName==GuessThePresidentName){
-        correct=correct+1;
-        outputElement.innerHTML=alert("You got it right");
-       outputText="Correct count is :  " + correct;
-        outputElement.textContent=outputText;  
-    } else {
-        wrong=wrong+1;
-        outputElement.innerHTML=alert("Wrong president");
-        outputText="Wrong count is : " + wrong;
-       outputElement.textContent=outputText;
+ <style>
+    label {
+        display: inline-block;
+        width: 220px;
     }
+    
+    p {
+        background-color: rgb(173, 196, 72);
+        color: rgb(156, 100, 100);
+        display: inline;
+    }
+    
+    p:hover {
+        background-color: rgba(153, 216, 93, 0.712);
+        color: rgb(37, 43, 40);
+        display: inline;
+    }
+    
+    h2 {
+        background-color: rgb(197, 65, 164);
+        color: rgb(53, 19, 19);
+        display: inline-block;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    </style>
+<body>
+<h1>President guess by Trilochan Reddy Sama</h1>
+<h2>Getting input</h2>
+
+<div class = "container">
+    <form>
+        <label for="form_age">Enter the secret president name </label>
+        <input type ="password" id="form_age" name="form_age" min=10 max=50 step=2 value= "George Washington"> <br>
+    
+        <label for="form_nick"> Guess the president </label>
+        <input type ="text" id="form_nick" name="form_nick" autofocus> <br>
+    
+        <input type="button" onclick="checkGuess()" value="Check the guess">
+    </form>
+   </div>
+<div class = "container">
+    <br>
+    <p id="result">This text will be replaced </p>
+</div><br>
+<script> 
+let correct = 0;
+let wrong = 0;
+var cntNew = 0;
+function checkGuess (){
+console.log("Getting form values")
+password = document.getElementById("form_age").value
+text = document.getElementById("form_nick").value
+
+out = document.getElementById("result")
+if(password==text){
+    cntNew = 0;
+    correct = correct + 1;
+    out.innerHTML = "correct : " + correct +"wrong : " + wrong
+    alert("You got it right")  
+} else {
+    cntNew = cntNew + 1;
+    wrong = wrong + 1;
+    out.innerHTML = "correct : " + correct + "wrong : " + wrong
+    alert("Wrong President")
+    if (cntNew >=3){
+        if (wrong >=3){
+            incorrectcheckGuess()
+         }
+     }
+ }
+}
+function incorrectcheckGuess(){
+alert("Sorry, game over.")
 }
 </script>
+<br>    
+<div>
+    <img src="amur falcon.jfif" id="im" width="100" height="100" onclick="swapImage()">
+    <script>
+        var useImage=1;
+        function swapImage(){
+            switch(useImage){
+                case 1:
+                document.getElementById('im').src="malia.jfif";
+                useImage=2;
+                break;
+                case 2:
+                document.getElementById('im').src="tasmanian scrubwren.jfif";
+                useImage=3;
+                break;
+                case 3:
+                document.getElementById('im').src="amur falcon.jfif";
+               useImage=1;
+                break;
+            }
+        }
+    </script>
 
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 </body>
 </html> 

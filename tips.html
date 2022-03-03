@@ -1,93 +1,95 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <h1>Sravani Jakkula computes tips</h1>
-    <title>page to get values</title>
-</head>
+      
+    <head>
+        <title> Tips Page</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" 
+          integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" 
+          integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    </head>
+    <style>
+        h2 {
+          background-color: rgb(70, 180, 107);
+          color: black;
+          display: inline-block;
+          font-family: 'Times New Roman', Times, serif;
+      }
+      </style>
+
 <body>
 
-<h2>Getting input</h2>
-<form>
-    <label for="amount">Enter a check amount</label>
-    <input type="number" id="amount" value="20">
-    <label for=""tip_increase>Enter tip increase</label>
-    <input type="number" id="tip_increase" value="0.05">
-    <input type="button" onclick="tips()" value="Find tips">
-</form>
-<p id="result">Results are displayed above</p>
-<script>
-    function tips(){
-        console.log("Getting form values")
-        let a=document.getElementById("amount").value
-        a=parseInt(a);
-        //console.log(Number(a));
-        console.log(typeof a);
-        let b=document.getElementById("tip_increase").value
-        console.log(b);
-        let result="";
-        for(let i=0;i<10;i++){
-            let s=Math.round(a*(10/100));
-            a=a+s;
-            console.log( s);
-            //result=a*(0.01)
-            
-            //result=s+(a/10)+b;
-        } 
-        out.innerHTML="Tip amounts by increase of "+s+"are"+result;
-    }
-</script>
-<form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <h2> Trilochan Reddy Sama computes tips </h2>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-    <input type="button" onclick="resolveForm()" value="Get values from form">
-</form>
-
-
-<p id="result">This text will be replaced </p>
-
-<script> 
-
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    <form>
+        <label for="form_one"> Enter a check amount </label>
+        <input type ="number" id="form_one" name="form_one" value=20> <br>
     
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
-<form>
-    <input type="radio" id="m" name="calculations" value="times"   
-      checked onclick="chooseOp()" >
-    <label for="m">*</label></br>
-  
-    <input type="radio" id="d" name="calculations" 
-       value="divide" onclick="chooseOp()">
-    <label for="d">/</label></br>
-  
-    <input type="radio" id="e" name="calculations"   
-       value="exponent" onclick="chooseOp()">
-    <label for="e">**</label></br>
-
-    <input type="button" onclick="chooseOp()" value="Get values from radio group">
-  </form>
-<p id="result">generate result</p>
-<script>
+        <label for="form_two"> Enter tip increase </label>
+        <input type ="number" id="form_two" name="form_two" value=0.05> <br>
+    
+        <input type="button" onclick="tips()" value="Find tips" style="background-color: rgb(255, 102, 0);">
+    </form>
+    
+    <div id="result"></div>
+    <br>
+    <form margin-left: 10px; style="background-color: gray;">
+        <input type="radio" id="times" name="arthematic" value="times" onclick="chooseOp()">
+        <label for="times">*</label></br>
+      
+        <input type="radio" id="divide" name="arthematic"  onclick="chooseOp()" 
+           value="divide">
+        <label for="divide">/</label></br>
+      
+        <input type="radio" id="exponent" name="arthematic"  onclick="chooseOp()"   
+           value="exponent">
+        <label for="exponent">**</label></br>
+      </form>
+      <br>
+      <p id="results">Choose any one</p>
+    
+    <script> 
     function chooseOp(){
-       let a=document.getElementById("amount").value
-       let b=document.getElementById("tip_increase").value
+        var valueForAmount=(Number)(document.getElementById("form_one").value)
+        var valueForTipIncrease=(Number)(document.getElementById("form_two").value)
+         exponent=document.getElementById("exponent").checked
+     
+         times=document.getElementById("times").checked
        
+         divide=document.getElementById("divide").checked
+         
+      if(exponent){
+        document.getElementById('results').innerHTML="<b>[Amount ** TipIncrease] Value is: </b>"+valueForAmount**valueForTipIncrease
+      }
+        else if(times){
+        document.getElementById('results').innerHTML="<b>[Amount * TipIncrease] Value is: </b>"+valueForAmount*valueForTipIncrease
+        }
+        else if(divide){
+        document.getElementById('results').innerHTML="<b>[Amount / TipIncrease] value is: </b>"+valueForAmount/valueForTipIncrease
+        }
     }
+    </script>
+    <script> 
+    function tips(){
+        var valueForAmount=(Number)(document.getElementById("form_one").value)
+        var valueForTipIncrease=(Number)(document.getElementById("form_two").value)
+        result="Tip amounts by increase of "+valueForTipIncrease+" are: "
+     
+        var sumValue=valueForAmount*0.1
+        result+=sumValue+0.0
+        for(let i=0;i<9;i++){
+         var z=sumValue +(valueForAmount*valueForTipIncrease);
+         result += " "+Math.round(z * 10) / 10
+         sumValue=Math.round(z * 10) / 10
+    }
+    document.getElementById('result').innerHTML=result;
+    }
+    
+    </script>
 
-</script>
 </body>
-</html>
+</html> 
